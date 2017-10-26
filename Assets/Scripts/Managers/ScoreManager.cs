@@ -11,7 +11,6 @@ public class ScoreManager : MonoBehaviour {
 
 	public string DistanceScore { get; set; }
 	public string TimeScore { get; set; }
-	public GameObject player;
 
 	#endregion
 
@@ -30,7 +29,7 @@ public class ScoreManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float distance = Vector3.Distance (spawnLocation, player.transform.position) / 100;
+		float distance = Vector3.Distance (spawnLocation, GameManager.instance.GetPlayerPosition) / 100;
 		DistanceScore = distance.ToString("0.00");
 	}
 

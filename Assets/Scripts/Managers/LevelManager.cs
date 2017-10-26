@@ -8,16 +8,6 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class LevelManager : MonoBehaviour {
 
-	#region Private members
-
-	private LaneSpawner laneSpawner;
-
-	#endregion
-
-	void Start() {
-		laneSpawner = FindObjectOfType<LaneSpawner> ();
-	}
-
 	public void LoadNextScene() {
 		int index = SceneManager.GetActiveScene ().buildIndex;
 		SceneManager.LoadScene (++index);
@@ -30,15 +20,13 @@ public class LevelManager : MonoBehaviour {
 
 	public void ReplayScene() {
 		int index = SceneManager.GetActiveScene ().buildIndex;
-		laneSpawner.DestroyChildren ();
 		SceneManager.LoadScene (index);
 	}
 
 	public void NextLevel() {
 		int index = SceneManager.GetActiveScene ().buildIndex;
-		laneSpawner.DestroyChildren ();
-		laneSpawner.maxConsecutiveDangerousLanes++;
-		laneSpawner.numberOfLanes += 3;
+		GameManager.instance.maxConsecutiveDangerousLanes++;
+        GameManager.instance.numberOfLanes += 3;
 		SceneManager.LoadScene (index);
 	}
 

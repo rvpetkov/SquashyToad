@@ -123,7 +123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &49399192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,11 +142,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 49399191}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &114183984
 Prefab:
@@ -212,8 +212,6 @@ GameObject:
   - component: {fileID: 240039673}
   - component: {fileID: 240039672}
   - component: {fileID: 240039671}
-  - component: {fileID: 240039670}
-  - component: {fileID: 240039669}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -221,40 +219,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &240039669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 240039668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b75c0a3e9a1d35f49a79631c295223a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  safeLanes:
-  - {fileID: 1037119991046576, guid: bfd2b2841189242438ecfe5797826fa0, type: 2}
-  dangerousLanes:
-  - {fileID: 1965750462903842, guid: 761bdcdee473bfe458cbf4f7acef88ef, type: 2}
-  - {fileID: 1604968533743148, guid: eb01fb89103385644afdd18bbbcb9c81, type: 2}
-  victoryLane: {fileID: 1230575137854594, guid: 2d056d3b710ee6b44b73c9656a8a6fd8,
-    type: 2}
-  player: {fileID: 1016428680}
-  numberOfLanes: 14
-  maxConsecutiveDangerousLanes: 1
-  laneSpawnDistance: 5000
---- !u!114 &240039670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 240039668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48eb463bcec371f4181f93cd0f7c79f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1016428680}
 --- !u!114 &240039671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +241,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f42f4955e6c9a44c860c6d075a9717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxConsecutiveDangerousLanes: 1
+  numberOfLanes: 5
+  player: {fileID: 1016428680}
 --- !u!4 &240039673
 Transform:
   m_ObjectHideFlags: 0
@@ -284,11 +251,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 240039668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2748, y: 0, z: 164}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &295047577 stripped
 Transform:
@@ -371,7 +338,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 240039671}
+      - m_Target: {fileID: 49399192}
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -819,7 +786,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 240039671}
+      - m_Target: {fileID: 49399192}
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -941,7 +908,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 240039671}
+      - m_Target: {fileID: 49399192}
         m_MethodName: NextLevel
         m_Mode: 1
         m_Arguments:
@@ -1135,11 +1102,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 498412, guid: 970dd4b9371394fb4890965f608d46fd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.67
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 498412, guid: 970dd4b9371394fb4890965f608d46fd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.61
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 498412, guid: 970dd4b9371394fb4890965f608d46fd, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1245,12 +1212,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1016428680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2715, y: 4.61, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 533041543}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1016428682
 CapsuleCollider:
@@ -1644,7 +1611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1159094821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1656,7 +1623,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48eb463bcec371f4181f93cd0f7c79f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1016428680}
 --- !u!4 &1159094822
 Transform:
   m_ObjectHideFlags: 0
@@ -1664,11 +1630,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1159094820}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 70, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1159937750
 GameObject:
@@ -1746,7 +1712,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 240039671}
+      - m_Target: {fileID: 49399192}
         m_MethodName: ReplayScene
         m_Mode: 1
         m_Arguments:
@@ -1955,7 +1921,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1332052513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1974,9 +1940,6 @@ MonoBehaviour:
   - {fileID: 1965750462903842, guid: 761bdcdee473bfe458cbf4f7acef88ef, type: 2}
   victoryLane: {fileID: 1230575137854594, guid: 2d056d3b710ee6b44b73c9656a8a6fd8,
     type: 2}
-  player: {fileID: 1016428680}
-  numberOfLanes: 5
-  maxConsecutiveDangerousLanes: 1
   laneSpawnDistance: 7000
 --- !u!4 &1332052514
 Transform:
@@ -1989,7 +1952,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1649266547
 GameObject:

@@ -19,9 +19,6 @@ public class LaneSpawner : MonoBehaviour {
 	public GameObject[] safeLanes;
 	public GameObject[] dangerousLanes;
 	public GameObject victoryLane;
-	public GameObject player;
-	public int numberOfLanes = 5;
-	public int maxConsecutiveDangerousLanes = 1;
 	public int laneSpawnDistance = 5000;	//Lanes after this distance are not yet created 
 											//and lanes before this distance are destroyed.
 
@@ -38,13 +35,8 @@ public class LaneSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		DontDestroyOnLoad (gameObject);
-
-		if (player == null) {
-			player = FindObjectOfType<PlayerMovement> ().gameObject;
-		}
 		SpawnPlayer ();
-		consecutiveDangerousLaneCount = maxConsecutiveDangerousLanes;	//This way the first spawned lane is a Safe one
+		consecutiveDangerousLaneCount = GameManager.instance.maxConsecutiveDangerousLanes;	//This way the first spawned lane is a Safe one
 	}
 
 	void Update() {
@@ -56,12 +48,8 @@ public class LaneSpawner : MonoBehaviour {
 	/// Creates the lanes dynamicly based on the player's location along the Z axis.
 	/// </summary>
 	private void CreateLanesDynamically() {
-		if (player == null) {
-			player = FindObjectOfType<PlayerMovement> ().gameObject;
-		}
-
-		while ((offset < laneSpawnDistance + player.transform.position.z) && (spawnedLanes < numberOfLanes)) {
-			if ((lastSpawnedLane == LaneType.Dangerous) && (consecutiveDangerousLaneCount == maxConsecutiveDangerousLanes)) {
+		while ((offset < laneSpawnDistance + GameManager.instance.GetPlayerPosition.z) && (spawnedLanes < GameManager.instance.numberOfLanes)) {
+			if ((lastSpawnedLane == LaneType.Dangerous) && (consecutiveDangerousLaneCount == GameManager.instance.maxConsecutiveDangerousLanes)) {
 				//If the last lane was Dangerous and we can't spawn any more Dangerous lanes in a row
 				//we should spawn a Safe one.
 				CreateRandomLane (safeLanes, offset);
@@ -77,7 +65,7 @@ public class LaneSpawner : MonoBehaviour {
 			offset += 1000;
 			spawnedLanes++;
 		}
-		if(spawnedLanes == numberOfLanes) {
+		if(spawnedLanes == GameManager.instance.numberOfLanes) {
 			CreateVictoryLane (offset);
 			spawnedLanes++;
 		}
@@ -87,7 +75,7 @@ public class LaneSpawner : MonoBehaviour {
 	/// Spawns the player at a predefined position at the beginning of the level.
 	/// </summary>
 	private void SpawnPlayer () {
-		player.transform.position = new Vector3 (transform.position.x, 5, transform.position.z);
+        GameManager.instance.GetPlayerPosition = new Vector3 (transform.position.x, 5, transform.position.z);
 	}
 
 	/// <summary>
@@ -108,7 +96,7 @@ public class LaneSpawner : MonoBehaviour {
 	/// </summary>
 	private void DestroyPastLanes() {
 		foreach (Transform line in transform) {
-			if (line.transform.position.z < player.transform.position.z - laneSpawnDistance) {
+			if (line.transform.position.z < GameManager.instance.GetPlayerPosition.z - laneSpawnDistance) {
 				Destroy (line.gameObject);
 			}
 		}
@@ -121,16 +109,5 @@ public class LaneSpawner : MonoBehaviour {
 	private void CreateVictoryLane(float offset) {
 		GameObject[] victoryLaneArr = new GameObject[] { victoryLane };
 		CreateRandomLane (victoryLaneArr, offset);
-	}
-
-	/// <summary>
-	/// This method is used to destroy all children(lanes) of the LaneSpawner.
-	/// This is necessary when changing scenes because if the lanes are not destroyed 
-	/// they will end up in the next level on top of the newly generated ones.
-	/// </summary>
-	public void DestroyChildren() {
-		foreach (Transform child in transform) {
-			Destroy (child.gameObject);
-		}
 	}
 }
