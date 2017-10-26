@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4754824417782888}
   - component: {fileID: 33024554349881282}
   - component: {fileID: 23062927269128072}
+  - component: {fileID: 114103893234929618}
   m_Layer: 0
   m_Name: star
   m_TagString: Untagged
@@ -80,3 +81,36 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1826044361492808}
   m_Mesh: {fileID: 4300000, guid: ce56a02467592774198505aaf2f6bbff, type: 3}
+--- !u!114 &114103893234929618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1826044361492808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 24
+  occlusionEnabled: 0
+  playOnAwake: 0
+  sourceClip: {fileID: 8300000, guid: ba03b71e4ad406a448eeea32edd26e56, type: 3}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourcePriority: 128
+  sourceSpatialBlend: 1
+  sourceDopplerLevel: 1
+  sourceSpread: 0
+  sourceVolume: 1
+  sourceRolloffMode: 0
+  sourceMaxDistance: 50000
+  sourceMinDistance: 100
+  hrtfEnabled: 1
+  audioSource: {fileID: 0}
